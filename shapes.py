@@ -51,24 +51,50 @@ class Shape:
 class Square(Shape):
     def __init__(self, distance=100, color=(0,0,0)):
         # call the parent's __init__ method with self, distance, 
-        Shape.__init__(self, distance, 90, color,'F-F-F-F-')
+        Shape.__init__(self, distance, 90, color,'{F-F-F-F-}')
         #an angle of 90, color, and the string 'F-F-F-F-'
 
 class Triangle(Shape):
     def __init__(self, distance=100, color=(0,0,0)):
-        Shape.__init__(self, distance, 120, color, 'F-F-F')
+        Shape.__init__(self, distance, 120, color, '{F-F-F}')
 
+#created a hexagon which has the curly { } for the beginFill() and endFill() methods
 class Hexagon(Shape):
     def __init__(self, distance=100, color=(0,0,0)):
         Shape.__init__(self, distance, 60, color, '{F-F-F-F-F-F}')
 
+#created a star shape
 class Star(Shape):
     def __init__(self, distance=100, color=(0,0,0)):
         Shape.__init__(self, distance, 135, color, 'F-F-F-F-F-F-F-F-F')
 
+#created a circle 
 class circle(Shape):
     def __init__(self, distance=50, color=(0,0,0)):
-        Shape.__init__(self, distance, 22.5, color, 'F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F')
+        Shape.__init__(self, distance, 22.5, color, '{F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F}')
 
+
+#define a test method for the new shapes 
 def test():
-    
+
+    #create the first shape hexagon
+    h = Hexagon()
+    h.setColor( (0.6, 0.8, 0.9) )
+    h.draw( -300, 0, scale=0.6, orientation=12 )
+
+    #create the first shape hexagon
+    h = Star()
+    h.setColor( (0.3, 0.9, 0.9) )
+    h.draw( 0, 200, scale=1.2, orientation=12 )
+
+     #create the first shape hexagon
+    h = circle()
+    h.setColor( (0.3, 0.9, 0.9) )
+    h.draw( 200, 0, scale=0.6, orientation=12 )
+
+      # wait
+    ti.TurtleInterpreter().hold()
+
+
+if __name__ == '__main__':
+    test()
