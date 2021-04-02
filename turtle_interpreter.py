@@ -10,6 +10,7 @@ import random
 
 #define a TurtleInterpreter
 class TurtleInterpreter:
+    initialized = False
     #define the init
     def __init__(self, dx = 800, dy = 800):
         #This helps the __init__ method to not create another turtle window if it already exists.
@@ -80,7 +81,12 @@ class TurtleInterpreter:
                 t.color(0.8, 0.8, 0.3)
             elif c == 'r':
                 t.color(0.7, 0.2, 0.3)
-            
+            elif c == '{':
+                t.begin_fill()
+            elif c == '}':
+                t.end_fill()
+
+            #Add two cases to drawString. For the character '{' call turtle.begin_fill(), and for the character '}' call turtle.end_fill()            
 
         # call the turtle.update() (not in the for loop)
         t.update()

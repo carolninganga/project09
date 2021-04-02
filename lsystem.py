@@ -30,8 +30,13 @@ class Lsystem:
     def setBase(self, b):
         self.base = b
     #the addRule function should append newrule to the rules field of self
-    def addRule(self, newrule[0]):
-        self.rules.append( newrule )
+    def addRule(self, newrule):
+        # mydict['F'] = ['FF', 'F+F-F']
+        # mydict represents the dictionary object
+        # 'F' represents the key
+        # ['FF', 'F+F-F'] represents the value
+        # rule = [symbol, replacement1, replacment2, ...]
+        self.rules[newrule[0]] = newrule[1:] # Key = 0 and Value = [replacement1, replacement2,...]
 
     # numsRules retruns the number of rules in the rules list 
     def numRules(self):
@@ -40,7 +45,7 @@ class Lsystem:
     # write a read method
     def read( self, filename ):
         # assign to the rules field of self the empty list
-        self.rules = []
+        self.rules = {}
         # assign to a variable (e.g. fp) the file object created with filename in read mode
         fp = open(filename)
         # for each line in fp 
@@ -71,44 +76,15 @@ class Lsystem:
         # for each character c the original string (istring)
         for c in istring:
             # if the character c is in the self.rules dictionary
-            if c in self.rules{}:
+            if c in self.rules:
                 # add to tstring a random choice from the dictionary entry self.rules[c]
                 tstring = tstring + random.choice(self.rules[c])
             # else
-            else
+            else:
                 # add to tstring the character c
-                tstring = tstring + 'c'
+                tstring = tstring + c
         # return tstring
         return tstring
-
-
-
-    # # assign to a local variable (e.g. tstring) the empty string
-    #     tstring = ""
-        
-    #     # for each character c in the input string (istring)
-    #     for c in istring:
-    #         # set a local variable (e.g. found) to False
-    #         found = False
-    #         # for each rule in the rules field of self
-    #         for rule in self.rules:
-    #             #Rule = [symbol, replacement]
-    #             # if the symbol in the rule is equal to the character in c
-    #             if rule[0] == c:
-    #                 # add to tstring the replacement from the rule
-    #                 tstring = tstring + rule[1]
-    #                 # set found to True
-    #                 found = True
-    #                 # break
-    #                 break   
-    #         # if not found
-    #         if found != True:
-    #             # add to tstring the character c
-    #             tstring = tstring + c 
-
-        # return tstring, make sure this statement is not inside the for loop
-        return tstring
-
 
     def buildString(self, iterations):
         # assign to a local variable (e.g. nstring) the base field of self
@@ -143,7 +119,6 @@ def main(argv):
     lstr = lsys.buildString( iterations )
     print( lstr )
 
-#    s2 = "F-FF--F-F-F-FF--F-FF-FF--F-F--F-FF--F-F-F-FF--F-F-F-FF--F-F-F-FF--F-FF-FF--F-F--F-FF--F-F-F-FF--F-F-F-FF--F-F-F-FF--F-FF-FF--F-F--F-FF--F-F-F-FF--F-F-F-FF--F-F-F-FF--F-FF-FF--F-F--F-FF--F-F-F-FF--F-F"
     return
 
 if __name__ == "__main__":
